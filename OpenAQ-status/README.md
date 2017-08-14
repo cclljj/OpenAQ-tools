@@ -1,4 +1,4 @@
-# OpenAQ-tatus
+# OpenAQ-status
 
 This tool is developed to parse the latest data from OpenAQ and summarize the results in a simple webpage.
 
