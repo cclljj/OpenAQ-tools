@@ -56,8 +56,11 @@ for item in feeds:
 		current = datetime.now()
 		timestamp = datetime.strptime(ts,'%Y-%m-%dT%H:%M:%S.000Z')
 		difference = current - timestamp
-		if difference.seconds < 0 or difference.seconds > 60 * 60 * 8:
+		if difference.seconds < 0 or difference.seconds > 60 * 60 * 8 or difference.days > 0:
 			site["active"] = -1
+		site["diff_s"] = difference.seconds
+		site["diff_d"] = difference.days
+
 
 		num = num + 1
 		results.append(site)
