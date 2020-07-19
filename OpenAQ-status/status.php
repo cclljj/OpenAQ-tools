@@ -62,9 +62,9 @@ $data = json_decode($string, true);
 <div class=container-fluid style="padding:25px"> 
 <h2>OpenAQ Status Report</h2>
 <font size="+1">
-<b>Number of records</b>: <?php echo $data["num_of_records"]; ?>
+<b>Number of records</b>: <?php print($data["num_of_records"]); ?>
 <br>
-<b>Last update (UTC time)</b>: <?php echo $data["version"]; ?>
+<b>Last update (UTC time)</b>: <?php print($data["version"]); ?>
 <br>
 </font>
 
@@ -119,84 +119,88 @@ foreach ($feeds as $item){
   } else {
     //echo "<tr>";
   }
-  echo "<tr>";
-
 ?>
 
-
-<td align="center"><?php echo $i; ?></td>
+<tr>
+<td align="center"><?php print($i); ?></td>
 <td>
 <?php 
   	if ($item["active"]==-1){
-    		echo "<img src=\"image/offline.png\" alt=\"offline\" width=25>";
+    		print("<img src=\"image/offline.png\" alt=\"offline\" width=25>");
   	} else {
-    		echo "<img src=\"image/online.png\" alt=\"online\" width=25>";
+    		print("<img src=\"image/online.png\" alt=\"online\" width=25>");
  	}
-	echo $item["sourceName"]; 
+	print($item["sourceName"]); 
 ?>
 </td>
 <td align="center"><?php 
 	if (isset($item["country"])){
-		echo $item["country"];
+		print($item["country"]);
 	} else {
-		echo "N/A";
+		print("N/A");
 	}
 ?></td>
 <td align="center"><?php 
 	if (isset($item["city"])){
-		echo $item["city"];
+		print($item["city"]);
 	} else {
-		echo "N/A";
+		print("N/A");
 	}
 ?></td>
-<td align="center"><?php echo $item["location"]; ?></td>
+<td align="center"><?php
+	if (isset($item["location"])){
+		print($item["location"]);
+	} else {
+		print("N/A");
+	}
+?></td>
 <td>
 <?php
 	$sensor = "pm25";
-	if ($item["sensor"][$sensor]<0) { echo "N/A"; } else { echo $item["sensor"][$sensor]; }
+	if ($item["sensor"][$sensor]<0) { print("N/A"); } else { print($item["sensor"][$sensor]); }
 ?>
 </td>
 <td>
 <?php
 	$sensor = "pm10";
-	if ($item["sensor"][$sensor]<0) { echo "N/A"; } else { echo $item["sensor"][$sensor]; }
+	if ($item["sensor"][$sensor]<0) { print("N/A"); } else { print($item["sensor"][$sensor]); }
 ?>
 </td>
 <td>
 <?php
 	$sensor = "co";
-	if ($item["sensor"][$sensor]<0) { echo "N/A"; } else { echo $item["sensor"][$sensor]; }
+	if ($item["sensor"][$sensor]<0) { print("N/A"); } else { print($item["sensor"][$sensor]); }
 ?>
 </td>
 <td>
 <?php
 	$sensor = "o3";
-	if ($item["sensor"][$sensor]<0) { echo "N/A"; } else { echo $item["sensor"][$sensor]; }
+	if ($item["sensor"][$sensor]<0) { print("N/A"); } else { print($item["sensor"][$sensor]); }
 ?>
 </td>
 <td>
 <?php
 	$sensor = "no2";
-	if ($item["sensor"][$sensor]<0) { echo "N/A"; } else { echo $item["sensor"][$sensor]; }
+	if ($item["sensor"][$sensor]<0) { print("N/A"); } else { print($item["sensor"][$sensor]); }
 ?>
 </td>
 <td>
 <?php
 	$sensor = "so2";
-	if ($item["sensor"][$sensor]<0) { echo "N/A"; } else { echo $item["sensor"][$sensor]; }
+	if ($item["sensor"][$sensor]<0) { print("N/A"); } else { print($item["sensor"][$sensor]); }
 ?>
 </td>
 <td>
 <?php
 	$sensor = "bc";
-	if ($item["sensor"][$sensor]<0) { echo "N/A"; } else { echo $item["sensor"][$sensor]; }
+	if ($item["sensor"][$sensor]<0) { print("N/A"); } else { print($item["sensor"][$sensor]); }
 ?>
 </td>
 <td>
-        <?php echo $item["gps_lat"]; ?>, <?php echo $item["gps_lon"]; ?>
+        <?php print($item["gps_lat"].", ".$item["gps_lon"]); ?>
 </td>
 <td>
-	<?php echo $item["timestamp"]; ?>
+	<?php print($item["timestamp"]); ?>
 </td>
 </tr>
 
